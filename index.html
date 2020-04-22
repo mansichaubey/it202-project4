@@ -109,8 +109,8 @@
             });
         }
         
-        //EventListener
-        document.querySelector("#addBtn").addEventListener("click", (e) => {
+        //EventListener for add button
+        document.querySelector("#addBtn").addEventListener("click", event => {
             let country = document.querySelector("#isCountry").value;
             countriesArr.push(country);
             let option = document.createElement("option");
