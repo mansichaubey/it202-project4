@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width">
+  <title>COVID-19 INFO</title>
+<link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+    google.charts.load('current', {'packages':['corechart', 'table']});
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+    :root {
+        --mdc-theme-primary: #ccffad;
+    }
+    body {
+        margin: 0;
+        background-color: #fffbb2;
+    }
+    main {
+        margin-left: 8px;
+    }
+    .view {
+        display:none;
+    }
+</style>
+</head>
+
+<body>
+    <aside class="mdc-drawer">
+        <div class="mdc-drawer__content">
+            <nav class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">about</i>
+                    <span class="mdc-list-item__text">About</span>
+                </a>
+                <a class="mdc-list-item" href="#select">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">countries</i>
+                    <span class="mdc-list-item__text">Select Countries</span>
+                </a>
+                <a class="mdc-list-item" href="#table">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data</i>
+                    <span class="mdc-list-item__text">Data Table</span>
+                </a>
+                <a class="mdc-list-item" href="#chart">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">chart</i>
+                    <span class="mdc-list-item__text">Google Chart</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Dsiplaying different screens -->
+    <main class="mdc-top-app-bar--fixed-adjust">
+      <div class="" id="about">
+         <h1>About</h1>
+          <h2>What Is Coronavirus</h2>
+         <p>Coronaviruses are a type of virus. There are many different kinds, and some cause disease. A newly identified type has caused a recent outbreak of respiratory illness now called COVID-19.</p>
+         <br><p>For more information visit the <a href="https://www.who.int/health-topics/coronavirus#tab=tab_1">WHO website.</a></p>
+     </div> 
+
+     <div class="view" id="screen1">
+         <h1>Select Countries</h1>
+         <p>Select desired countries from the list. View the table once you have selected the countries.</p>
+         <input id="isCountry" name="country" list="countryList">
+         <datalist id="countries">
+         </datalist>
+         <button class="mdc-button" id="addBtn">  
+           <span class="mdc-button__ripple"></span>Add</button>
+         <p id="countryList"></p>
+        </div>
+        <div>
+         <button class="mdc-button" id="chart">  
+         <span class="mdc-button__ripple"></span>Plot Chart</button>
+        </div> 
+
+     <div class="view" id="screen2">
+         <h1>Table</h1>
+         <h3>Confirmed Cases</h3>
+         <div class="mdc-data-table">
+          <table class="mdc-data-table__table" aria-label="confirmedcases">
+          </table>
+        </div>
+     </div>
+     <div class="view" id="screen3">
+         <h1>Chart</h1>
+         <div id="piechart" style="width: 1000px; height: 1000px;"></div>
+     </div> 
+    </main>
+    
+    <script>
+        let countriesArr = [];
+        let plotChart = false;
+        let tableData = [];
+        
+        //Function for fetching Covid19 data.
+        goFetch=()=>{
+            let api="https://pomber.github.io/covid19/timeseries.json";
+            fetch(api)
+            .then(response=>response.json())
+            .then(json=>{
+                info = json;
+                for(isCountry in data){
+                    let elem = document.createElement("option");
+                    elem.value = isCountry;
+                    document.querySelector("#countryList").appendChild(option);
+                }
+            });
+        }
+        
+        //EventListener
+        document.querySelector("#addBtn").addEventListener("click", (e) => {
+            let country = document.querySelector("#isCountry").value;
+            countriesArr.push(country);
+            let option = document.createElement("option");
+            option.textContent = isCountry;
+            option.value = isCountry;
+            document.body.appendChild(option);
+        });
+        
+        //Function for making table from fetched data
+        
+        
+    </script>
+    
+    </body>
+</html>

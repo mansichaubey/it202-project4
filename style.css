@@ -1,0 +1,16 @@
+:root  { 
+    --mdc-theme-primary: #ccffad;
+}
+
+body{
+    margin: 0;
+    background-color: #fffbb2;
+}
+
+main{
+    margin-left: 8px;
+}
+
+.view{
+    display:none;
+}
